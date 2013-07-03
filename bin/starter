@@ -1,0 +1,13 @@
+#!/bin/bash
+
+python_path=$HOME/bin/python2.7
+
+script_path=$HOME/smartengine/libs/start.py
+
+if [[ $1 ]]
+then 
+	exec $python_path $script_path $1
+else
+	exec $python_path $script_path
+fi
+	
