@@ -1,0 +1,4 @@
+{
+	"resources_dir": "/opt/connecteurSQL/resources",
+	"cache_dir": "/opt/connecteurSQL/cache"
+}
