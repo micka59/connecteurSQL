@@ -1,8 +1,0 @@
-{
-	"dbtype":"ORACLE",
-	"host": "P1HORGLDB01.app.eiffage.loc",
-	"password": "AdmOrus01",
-	"user": "HORADM",
-	"port": "1521",
-	"SID": "P1HORGL1"
-}

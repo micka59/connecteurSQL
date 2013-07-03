@@ -1,9 +1,0 @@
-{
-	"dbtype":"MYSQL",
-	"host": "slxp0071.app.eiffage.loc",
-        "password": 'cjExZEByb2dlcg==',
-        "crypted":"True",
-        "user": "roger_read",
-        "port": "3306",
-        "SID": "dbrefnagios"
-}

@@ -1,8 +1,0 @@
-{
-	"dbtype":"ORACLE",
-	"host": "R1OPSGLCL01.app.eiffage.loc",
-	"password": "dkQ08bjf",
-	"user": "OPS_QUERY",
-	"port": "1521",
-	"SID": "RPOPSGL1"
-}
