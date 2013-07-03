@@ -1,0 +1,65 @@
+{
+"name": "sv -->sauvegardes",
+
+"description" : "Etat des sauvegardes",
+
+"data_output": {
+
+        "type": "json",
+
+        "params": {"q1":"tbsvg"},
+
+        "encode" : "utf-8"
+
+},
+
+"data_sources": [
+
+                {
+
+                        "type": "Database",
+
+                        "instance": "P1SUFGL1",
+
+                        "list_queries": [
+
+                                {
+
+					"query" : "SELECT duree, dtdeb, nmhostmaster from svg limit 5",
+                                        "name":"q1",
+
+                                        "description":false,
+
+                                        "encode_origin" : "iso-8859-1",
+
+                                        "mapping": {
+
+                                                "fields_renaming": {
+
+							"metric.nmhostmaster.value":["duree", true,true],
+							"metric.nmhostmaster.metric":["nmhostmaster", true,true],
+							"datetime": ["dtdeb", true,true]
+
+                                                },
+
+                                                "records_constants": {
+
+							"metric.nmhostmaster.type": "GAUGE",
+							"component": "mysql",
+							"resource": "test"
+
+                                                }
+
+                                        }
+
+                                }
+
+                        ]
+
+                }
+
+        ],
+"post_treatments" : [ { "liveSQL.liveData": { "params":"ok"} } ] 
+}
+
+

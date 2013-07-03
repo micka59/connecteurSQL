@@ -1,0 +1,34 @@
+{
+
+"name": "Test Ref Nagios",
+"description" : "A Simple MySQL connection",
+"refresh": 120,
+"data_output": {
+	"type": "json"
+},
+"data_sources": [
+		{
+			"type": "Database",
+			"instance": "dbrefnagios",
+			"list_queries": [
+				{
+					"query": "select count(*) as nbhost from nagios_hosts",
+					"mapping": {
+						"fields_renaming": {
+							"metric.nbhost.value": ["nbhost", true,true]
+						},
+						"constants_records": {
+							"resource": "sup",
+							"component": "mysi",
+							"metric.nbhost.type": "GAUGE",
+							"event_type": "check",
+							"connector": "SQL_connector",
+							"connector_name": "dvpt_connector"
+						}
+					}
+				}
+			]
+		}
+	],
+"post_treatments": [{"liveSQL.liveData": { "params": "ok"} } ]
+}

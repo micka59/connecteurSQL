@@ -1,0 +1,37 @@
+{
+"name": "Test Live SQL with timestamp",
+"description" : "A simple test",
+"data_sources": [
+		{
+			"type": "Database",
+			"instance": "RPOPSGL1",
+			"list_queries": [
+				{
+					"query": "select LAST_ACTIVE_TIME, CPU_TIME, PLSQL_EXEC_TIME, USER_IO_WAIT_TIME, MODULE from STATS$SQL_SUMMARY where MODULE='AP_MATCH AMAPAPMATCH2'",
+					"description":false,
+					"limit": 20,
+					"mapping": {
+						"fields_renaming": {
+							"datetime": ["LAST_ACTIVE_TIME", false, false],
+							"cputime": ["CPU_TIME", true, false],
+							"plsqltime": ["PLSQL_EXEC_TIME", true, false],
+							"useriowaittime":["USER_IO_WAIT_TIME", true, false],
+							"resource": ["MODULE", false, false]
+						},
+						"records_constants": {
+							"component": "RPOPSGL1",
+							"cputime.bunit": "ms",
+							"plsqltime.bunit": "ms",
+							"useriowaittime.bunit": "ms",
+							"cputime.type": "GAUGE",
+							"plsqltime.type": "GAUGE",
+							"useriowaittime.type": "GAUGE"
+						}
+						
+					}
+				}
+			]
+		}
+	],
+"post_treatments": ["liveSQL.liveData2"]
+}

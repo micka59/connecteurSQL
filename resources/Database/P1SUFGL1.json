@@ -1,0 +1,19 @@
+{
+
+        "dbtype":"MYSQL",
+
+        "host": "slxp0059",
+
+        "password": "test123",
+
+        "crypted":"False",
+
+        "user": "test",
+
+        "port": "3308",
+
+        "SID": "dbsuf"
+
+}
+
+

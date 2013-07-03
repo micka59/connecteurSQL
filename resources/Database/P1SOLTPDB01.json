@@ -1,0 +1,8 @@
+{
+	"dbtype":"MSSQL",
+	"host": "P1SOLTPDB01.app.eiffage.loc",
+	"password": "N2pmx-%s",
+	"user": "eiffage\\\\s_sup_sql_prd",
+	"port": "61433",
+	"SID": "Soler"
+}

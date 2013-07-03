@@ -1,0 +1,44 @@
+{
+"name": "Test Ref Nagios",
+"description": "A Simple MySQL connection",
+"refresh": 1,
+"data_output": {
+		"type": "JSON",
+		"encoding": "utf-8",
+		"params":{
+			"root_name" : "music",
+			"line_name" : "song"
+		}
+	}, 
+"data_sources": [
+		{
+			"type": "SOAP",
+			"name" : "mdm",
+			"list_ws": [
+				{
+        			        "url": "https://mdm-dev.eiffage.loc/ebx-dataservices/connector",
+					"encode_origin":"utf-8",
+					"httpAuth": {	"username": "flux_ROG", "password": "fluxROG" },
+					"wsdl": "file:///opt/connecteurSQL/smartengine/libs/Dataset-ConfSI.wsdl",
+					"function": "count_ApplicationOperation",
+					"params": { "branch": "Dataspace-ConfSI", "instance": "Dataset-ConfSI" },
+					"name" : "mdm_test",
+					"mapping": {
+						"fields_renaming": {
+							"metric.TEST.value": ["result", true,true]
+						},
+						"records_constants": {
+							"resource": "mdm",
+							"component": "test_ws",
+							"metric.TEST.metric": "TEST",
+							"event_type": "check",
+							"connector": "SQL_connector",
+							"connector_name": "dvpt_connector"
+						}
+					}
+				}
+			]
+		}
+	],
+"post_treatments": [{ "publishCanopsis.publishInCanopsis": { "parmas": "ok"} }]
+}

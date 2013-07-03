@@ -1,0 +1,82 @@
+{
+"name": "Test Ref Nagios",
+"description" : "A Simple MySQL connection",
+"refresh": 1,
+"data_output": {
+	"type": "XML",
+	"encoding": "utf-8"
+},
+"data_sources": [
+                {
+                        "type": "Database",
+                        "instance": "dbrefnagios",
+                        "list_queries": [
+                                {
+                                        "query": "select * from PS_E1_INTFC_ERRDCT",
+                                        "limit": 10,
+                                        "description": true,
+					"name": "SQL1",
+                                        "mapping": {
+                                                "prefix": "test_",
+                                                "fields_renaming": {
+                                                        "component": ["MESSAGE_SET_NBR", "true","false"],
+                                                        "resource":  ["MESSAGE_NBR","false","false"],
+                                                        "MESSAGE_RENAME": ["MESSAGE_NBR","false","true"]
+                                                }
+                                        }
+                                },
+                                {
+                                        "query": "select * from PS_E1_INTFC_ERRDCT",
+                                        "limit": 5,
+                                        "description":false,
+					"name": "SQL2",
+                                        "mapping": {
+                                                "prefix": "daube_"
+                                        }
+                                }
+                        ]
+                },
+		{
+			"type": "CSV",
+			"list_files": [
+				{
+					"url": "/opt/connecteurSQL/smartengine/resources/Files/shows.csv",
+					"param_name": "show_list",
+					"name": "SHOW_CSV",
+					"encode_origin": "ascii"
+				},
+                                {
+                                        "url": "/opt/connecteurSQL/smartengine/resources/Files/shows.csv",
+                                        "param_name": "show_list",
+					"name": "SHOW_CSV2",
+					"encode_origin": "ascii"
+                                }
+
+			]
+		},
+                {
+                        "type": "CSV",
+                        "name": "SHOW_CSV_HEADER",
+                        "list_files": [
+                                {
+                                        "url": "/opt/connecteurSQL/smartengine/resources/Files/shows.csv",
+					"header": ["Date","Venue","Address","Ville","Etat","Zip","Pays","Details","Age Limit","Ticket Details","Ticket Link","Artists"],
+					"name": "SHOW_CSV3"
+                                }
+                        ]
+                },
+		{
+			"type": "JSON",
+			"name": "SHOW_JSON",
+			"list_files": [
+				{
+					"url": "/opt/connecteurSQL/smartengine/resources/Files/shows.json",
+					"name": "SHOW_CSV2"
+				}
+			]
+		}
+
+	],
+"merge" : ["SHOW_CSV4", "SHOW_CSV3"],
+"post_treatments": []
+}

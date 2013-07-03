@@ -1,0 +1,39 @@
+{
+"name": "Test Ref Nagios",
+"description": "A Simple MySQL connection",
+"refresh": 1,
+"data_output": {
+		"type": "SQL",
+		"encoding": "utf-8",
+		"params":{
+			"tables" : {
+				"SHOW_JSON": "shows_output"
+			}
+		}
+	}, 
+"data_sources": [
+		{
+			"type": "JSON",
+			"name": "SHOW_JSON",
+			"list_files": [
+				{
+					"url": "/opt/connecteurSQL/smartengine/resources/Files/shows.json",
+					"mapping": {
+						"fields_renaming": {
+							"resource": ["City", true, true]
+						},
+						"records_constants": {
+							"component": "RPOPSGL1"
+						},
+						"dynamic_values": {
+							"Country": { "function" : { "name": "replace", "field_name": "Country", "value_to_replace": "US", "replace_value": "United States"  }}
+						},
+						"delete_fields": [ "Venue"] 	
+					}	
+				}
+			]
+		}
+
+	],
+"post_treatments": []
+}

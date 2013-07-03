@@ -1,0 +1,9 @@
+{
+	"dbtype":"MYSQL",
+	"host": "slxp0122.app.eiffage.loc",
+        "password": "MySqlCentreon2010",
+        "crypted":"True",
+        "user": "centreon",
+        "port": "3306",
+        "SID": "ndo"
+}

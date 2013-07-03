@@ -1,0 +1,12 @@
+<encspot>
+  <file>
+   <Name type="mp3">some filename.mp3</Name>
+   <Encoder>Gogo (after 3.0)</Encoder>
+   <Bitrate type="b" encode="utf-8">131</Bitrate>
+  </file>
+  <file>
+   <Name>another filename.mp3</Name>
+   <Encoder env="windows">iTunes</Encoder>
+   <Bitrate>128</Bitrate>  
+  </file>
+</encspot>

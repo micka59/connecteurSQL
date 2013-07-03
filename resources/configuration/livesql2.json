@@ -1,0 +1,19 @@
+{
+"name": "Test Live SQL",
+"description" : "A simple test",
+"data_output": "json",
+"data_sources": [
+		{
+			"type": "Database",
+			"instance": "RPOPSGL1",
+			"list_queries": [
+				{
+					"query": "select DISTINCT MODULE from STATS$SQL_SUMMARY",
+					"description":false,
+					"limit": 200
+				}
+			]
+		}
+	],
+"post_treatments": ["rienacirer.rien"]
+}
